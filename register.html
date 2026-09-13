@@ -1,372 +1,914 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Register | My Movie Hub</title>
+
+
     <style>
+
+        /* ================= RESET ================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         body {
+
             font-family: Arial, sans-serif;
+
             background: #f5f5f5;
+
             color: #222;
         }
 
+
+        /* ================= NAVBAR ================= */
+
         .navbar {
+
             height: 70px;
+
             background: #333545;
+
             display: flex;
+
             align-items: center;
+
             padding: 0 7%;
+
             gap: 25px;
+
             color: white;
         }
 
+
+        /* LOGO */
+
         .logo {
+
             font-size: 27px;
+
             font-weight: bold;
-        }
 
-        .logo b {
-            color: #f84464;
-        }
-
-        .search {
-            background: white;
-            color: #777;
-            height: 42px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .search input {
-            border: 0;
-            outline: 0;
-            width: 100%;
-            padding-left: 10px;
-        }
-
-        .location {
-            font-size: 14px;
-        }
-
-        .signin,
-        .secondary-btn {
-            background: #f84464;
-            border: 0;
-            color: #fff;
-            padding: 9px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .secondary-btn {
-            background: #22232f;
-        }
-
-        .menu {
-            font-size: 22px;
-        }
-
-        .sub-nav {
-            height: 45px;
-            background: #22232f;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 7%;
-            overflow: hidden;
-        }
-
-        .sub-nav a {
-            color: #ddd;
-            text-decoration: none;
-            font-size: 13px;
-            margin-right: 22px;
             white-space: nowrap;
         }
 
-        .auth-page {
-            min-height: calc(100vh - 155px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #ecedf0 100%);
+
+        .logo b {
+
+            color: #f84464;
         }
 
-        .auth-card {
+
+        /* SEARCH */
+
+        .search {
+
             background: white;
+
+            color: #777;
+
+            height: 42px;
+
+            border-radius: 5px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 15px;
+
+            flex: 1;
+
+            max-width: 600px;
+        }
+
+
+        .search input {
+
+            border: none;
+
+            outline: none;
+
             width: 100%;
+
+            padding-left: 10px;
+
+            font-size: 14px;
+        }
+
+
+        /* LOCATION */
+
+        .location {
+
+            font-size: 14px;
+
+            white-space: nowrap;
+        }
+
+
+        /* LOGIN BUTTON */
+
+        .login-btn {
+
+            background: #f84464;
+
+            border: none;
+
+            color: white;
+
+            padding: 9px 20px;
+
+            border-radius: 4px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        .login-btn:hover {
+
+            background: #d93655;
+        }
+
+
+        /* MENU */
+
+        .menu {
+
+            width: 42px;
+
+            height: 42px;
+
+            background: #22232f;
+
+            border-radius: 5px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            margin-left: auto;
+
+            flex-shrink: 0;
+        }
+
+
+        /* ================= REGISTER PAGE ================= */
+
+        .auth-page {
+
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f5f5 0%,
+                    #ecedf0 100%
+                );
+        }
+
+
+        /* REGISTER CARD */
+
+        .auth-card {
+
+            background: white;
+
+            width: 100%;
+
             max-width: 500px;
+
             border-radius: 18px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+
             padding: 36px 30px;
         }
 
+
+        /* HEADING */
+
         .auth-card h1 {
+
             font-size: 32px;
+
             margin-bottom: 8px;
+
             color: #22232f;
         }
 
-        .auth-card p {
+
+        .auth-card > p {
+
             color: #666;
+
             margin-bottom: 28px;
+
             line-height: 1.6;
         }
 
+
+        /* ================= FORM ================= */
+
         .auth-form {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 18px;
         }
 
+
+        /* INPUT GROUP */
+
         .input-group {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 8px;
         }
 
+
         .input-group label {
+
             font-size: 14px;
+
             font-weight: 600;
+
             color: #333;
         }
 
+
         .input-group input {
+
             padding: 14px 15px;
+
             border: 1px solid #ddd;
+
             border-radius: 10px;
+
             font-size: 15px;
+
             outline: none;
-            transition: border-color 0.2s ease;
+
+            transition: 0.2s;
         }
+
 
         .input-group input:focus {
+
             border-color: #f84464;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(248, 68, 100, 0.08);
         }
+
+
+        /* REGISTER BUTTON */
 
         .submit-btn {
+
             background: #f84464;
+
             border: none;
+
             border-radius: 10px;
+
             color: white;
+
             font-size: 16px;
+
             font-weight: bold;
+
             padding: 15px 20px;
+
             cursor: pointer;
-            transition: transform 0.2s ease;
+
+            transition: 0.2s;
         }
 
+
         .submit-btn:hover {
+
+            background: #d93655;
+
             transform: translateY(-1px);
         }
 
+
+        /* LOGIN LINK */
+
         .auth-footer {
+
             text-align: center;
+
             margin-top: 24px;
+
             font-size: 14px;
+
             color: #555;
         }
 
+
         .auth-link {
+
             color: #f84464;
+
             text-decoration: none;
+
             font-weight: 600;
         }
 
+
+        .auth-link:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* DEMO NOTE */
+
+        .demo-note {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 12px;
+
+            color: #999;
+        }
+
+
+        /* ================= FOOTER ================= */
+
         footer {
+
             background: #22232f;
+
             color: white;
+
             padding: 45px 7% 20px;
         }
 
+
         .footer-content {
+
             display: grid;
+
             grid-template-columns: 2fr 1fr 1fr;
+
             gap: 50px;
+
             padding-bottom: 35px;
         }
 
+
         .footer-content h2 {
+
             margin-bottom: 12px;
         }
 
+
         .footer-content h2 span {
+
             color: #f84464;
         }
 
+
         .footer-content h3 {
+
             margin-bottom: 15px;
         }
 
+
         .footer-content a {
+
             display: block;
+
             color: #aaa;
+
             text-decoration: none;
+
             margin: 10px 0;
+
             font-size: 14px;
         }
 
+
+        .footer-content a:hover {
+
+            color: white;
+        }
+
+
         .footer-content p {
+
             color: #aaa;
+
             font-size: 14px;
+
             margin-bottom: 8px;
         }
 
+
+        /* COPYRIGHT */
+
         .copyright {
+
             border-top: 1px solid #444;
+
             padding-top: 20px;
+
             text-align: center;
+
             color: #777;
+
             font-size: 13px;
         }
 
+
+        /* ================= RESPONSIVE ================= */
+
         @media (max-width: 900px) {
+
             .navbar {
+
                 padding: 0 4%;
             }
 
+
             .location {
+
                 display: none;
             }
         }
 
+
         @media (max-width: 600px) {
+
             .navbar {
+
                 height: auto;
+
                 padding: 15px;
+
                 flex-wrap: wrap;
             }
 
+
             .logo {
+
                 font-size: 22px;
             }
 
+
             .search {
+
                 order: 3;
+
                 flex-basis: 100%;
             }
 
+
             .auth-card {
+
                 padding: 28px 22px;
             }
 
+
+            .auth-card h1 {
+
+                font-size: 27px;
+            }
+
+
             .footer-content {
+
                 grid-template-columns: 1fr;
+
                 gap: 30px;
             }
         }
+
     </style>
+
 </head>
+
+
 <body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
-        <div class="logo">My<b>Movie</b>Hub</div>
+
+
+        <div class="logo">
+
+            My<b>Movie</b>Hub
+
+        </div>
+
+
 
         <div class="search">
+
             🔍
-            <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities" />
+
+            <input
+                type="text"
+                placeholder="Search for movies, events and more"
+            >
+
         </div>
 
-        <div class="location">📍 Bengaluru</div>
 
-        <a class="signin" href="login.html">Login</a>
-        <div class="menu">☰</div>
+
+        <div class="location">
+
+            📍 Bengaluru
+
+        </div>
+
+
+
+        <a
+            class="login-btn"
+            href="login.html"
+        >
+
+            Login
+
+        </a>
+
+
+
+        <div class="menu">
+
+            ☰
+
+        </div>
+
+
     </header>
 
-    <nav class="sub-nav">
-        <div>
-            <a href="index.html">Movies</a>
-            <a href="#">Stream</a>
-            <a href="#">Events</a>
-            <a href="#">Plays</a>
-            <a href="#">Sports</a>
-            <a href="#">Activities</a>
-        </div>
 
-        <div>
-            <a href="#">ListYourShow</a>
-            <a href="#">Offers</a>
-            <a href="#">Gift Cards</a>
-        </div>
-    </nav>
+
+    <!-- ================= REGISTER ================= -->
 
     <main class="auth-page">
+
+
         <div class="auth-card">
-            <h1>Create account</h1>
-            <p>Join BookMyShow to book tickets, get offers, and enjoy premium entertainment.</p>
 
-            <form class="auth-form">
+
+            <h1>
+
+                Create Account
+
+            </h1>
+
+
+
+            <p>
+
+                Join My Movie Hub and explore
+                movies, entertainment and exciting shows.
+
+            </p>
+
+
+
+            <form
+                class="auth-form"
+                onsubmit="return false;"
+            >
+
+
+                <!-- FULL NAME -->
+
                 <div class="input-group">
-                    <label for="name">Full name</label>
-                    <input id="name" type="text" placeholder="Enter your full name" />
+
+                    <label for="name">
+
+                        Full Name
+
+                    </label>
+
+
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                    >
+
                 </div>
 
-                <div class="input-group">
-                    <label for="email">Email address</label>
-                    <input id="email" type="email" placeholder="Enter your email address" />
-                </div>
+
+
+                <!-- EMAIL -->
 
                 <div class="input-group">
-                    <label for="mobile">Mobile number</label>
-                    <input id="mobile" type="tel" placeholder="Enter your mobile number" />
+
+                    <label for="email">
+
+                        Email Address
+
+                    </label>
+
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                    >
+
                 </div>
+
+
+
+                <!-- MOBILE -->
 
                 <div class="input-group">
-                    <label for="password">Password</label>
-                    <input id="password" type="password" placeholder="Create a password" />
+
+                    <label for="mobile">
+
+                        Mobile Number
+
+                    </label>
+
+
+                    <input
+                        id="mobile"
+                        type="tel"
+                        placeholder="Enter your mobile number"
+                        autocomplete="tel"
+                    >
+
                 </div>
 
-                <button class="submit-btn" type="submit">Register</button>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                    >
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="confirm-password">
+
+                        Confirm Password
+
+                    </label>
+
+
+                    <input
+                        id="confirm-password"
+                        type="password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                    >
+
+                </div>
+
+
+
+                <!-- REGISTER -->
+
+                <button
+                    class="submit-btn"
+                    type="submit"
+                >
+
+                    Create Account
+
+                </button>
+
+
             </form>
 
+
+
+            <!-- LOGIN -->
+
             <div class="auth-footer">
-                Already have an account? <a class="auth-link" href="login.html">Login</a>
+
+                Already have an account?
+
+                <a
+                    class="auth-link"
+                    href="login.html"
+                >
+
+                    Login
+
+                </a>
+
             </div>
+
+
+
+            <!-- DEMO NOTE -->
+
+            <div class="demo-note">
+
+                Demo frontend website — no real account is created.
+
+            </div>
+
+
         </div>
+
+
     </main>
 
+
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
+
+
         <div class="footer-content">
-            <div>
-                <h2>My<span>Movie</span>Hub</h2>
-                <p>Your entertainment, our passion.</p>
-            </div>
+
+
+            <!-- ABOUT -->
 
             <div>
-                <h3>Quick Links</h3>
-                <a href="Book_Myshow.html">Movies</a>
-                <a href="#">Events</a>
-                <a href="#">Offers</a>
+
+                <h2>
+
+                    My<span>Movie</span>Hub
+
+                </h2>
+
+
+                <p>
+
+                    Your entertainment, our passion.
+
+                </p>
+
             </div>
 
+
+
+            <!-- QUICK LINKS -->
+
             <div>
-                <h3>Developed By</h3>
-                <p>Nitya.P</p>
-                <p>Karishma</p>
-                <p>Jeevana Shree</p>
-                <p>Sandeep</p>
-                <p>B.V.CH.Harsha Vardhan</p>
+
+                <h3>
+
+                    Quick Links
+
+                </h3>
+
+
+                <a href="index.html">
+
+                    Home
+
+                </a>
+
+
+                <a href="#">
+
+                    Movies
+
+                </a>
+
+
+                <a href="#">
+
+                    Events
+
+                </a>
+
             </div>
+
+
+
+            <!-- TEAM -->
+
+            <div>
+
+                <h3>
+
+                    Developed By
+
+                </h3>
+
+
+                <p>
+
+                    Nitya.P
+
+                </p>
+
+
+                <p>
+
+                    Karishma
+
+                </p>
+
+
+                <p>
+
+                    Jeevana Shree
+
+                </p>
+
+
+                <p>
+
+                    Sandeep
+
+                </p>
+
+
+                <p>
+
+                    B.V.CH.Harsha Vardhan
+
+                </p>
+
+            </div>
+
+
         </div>
 
-        <div class="copyright">© 2026 MovieHub Frontend - DCL Team-5</div>
+
+
+        <div class="copyright">
+
+            © 2026 My Movie Hub - DCL Frontend Team-5
+
+        </div>
+
+
     </footer>
+
+
 </body>
+
 </html>

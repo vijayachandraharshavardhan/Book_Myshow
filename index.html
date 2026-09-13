@@ -2,1022 +2,1209 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>My Movie Hub</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>My Movie Hub</title>
 
-/* ===================== BASIC ===================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <style>
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    color:#222;
-}
+        /* ===================== BASIC ===================== */
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ===================== NAVBAR ===================== */
+        html {
+            scroll-behavior: smooth;
+        }
 
-.navbar{
-    height:70px;
-    background:#333545;
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
 
-    display:flex;
-    align-items:center;
+        a {
+            text-decoration: none;
+        }
 
-    padding:0 7%;
-    gap:25px;
 
-    color:white;
-}
+        /* ===================== NAVBAR ===================== */
 
-.logo{
-    font-size:27px;
-    font-weight:bold;
-}
+        .navbar {
 
-.logo b{
-    color:#f84464;
-}
+            height: 70px;
 
-.search{
-    background:white;
-    color:#777;
+            background: #333545;
 
-    height:42px;
-    border-radius:5px;
+            display: flex;
 
-    display:flex;
-    align-items:center;
+            align-items: center;
 
-    padding:0 15px;
+            padding: 0 7%;
 
-    flex:1;
-    max-width:600px;
-}
+            gap: 25px;
 
-.search input{
-    border:0;
-    outline:0;
+            color: white;
 
-    width:100%;
+            position: relative;
+        }
 
-    padding-left:10px;
-}
 
-.location{
-    font-size:14px;
-}
+        /* ===================== LOGO ===================== */
 
-.signin{
-    background:#f84464;
+        .logo {
 
-    border:0;
-    color:#fff;
+            font-size: 27px;
 
-    padding:9px 20px;
+            font-weight: bold;
 
-    border-radius:4px;
+            white-space: nowrap;
+        }
 
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    font-size:14px;
-    font-weight:bold;
-}
+        .logo b {
 
-.menu{
-    font-size:22px;
-}
+            color: #f84464;
+        }
 
 
-/* ===================== SUB NAV ===================== */
+        /* ===================== SEARCH ===================== */
 
-.sub-nav{
-    height:45px;
+        .search {
 
-    background:#22232f;
+            background: white;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+            color: #777;
 
-    padding:0 7%;
+            height: 42px;
 
-    overflow:hidden;
-}
+            border-radius: 5px;
 
-.sub-nav a{
-    color:#ddd;
+            display: flex;
 
-    text-decoration:none;
+            align-items: center;
 
-    font-size:13px;
+            padding: 0 15px;
 
-    margin-right:22px;
+            flex: 1;
 
-    white-space:nowrap;
-}
+            max-width: 600px;
+        }
 
+        .search input {
 
-/* ================================================= */
-/*              CSS ONLY MOVIE SLIDER               */
-/* ================================================= */
+            border: 0;
 
-.movie-slider{
+            outline: 0;
 
-    width:100%;
+            width: 100%;
 
-    height:430px;
+            padding-left: 10px;
 
-    position:relative;
+            font-size: 14px;
+        }
 
-    overflow:hidden;
 
-    background:#111;
-}
+        /* ===================== LOCATION ===================== */
 
+        .location {
 
-/* All slides */
+            font-size: 14px;
 
-.slider-track{
+            white-space: nowrap;
+        }
 
-    display:flex;
 
-    width:700%;
+        /* ===================== SIGN IN ===================== */
 
-    height:100%;
+        .signin {
 
-    animation:movieSlide 12s infinite;
+            background: #f84464;
 
-}
+            color: white;
 
+            padding: 9px 18px;
 
-/* Every slide */
+            border-radius: 4px;
 
-.slide{
+            display: inline-flex;
 
-    width:14.285714%;
+            align-items: center;
 
-    height:100%;
+            justify-content: center;
 
-    flex-shrink:0;
+            font-size: 14px;
 
-    position:relative;
+            font-weight: bold;
 
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#111;
-}
+            white-space: nowrap;
+        }
 
+        .signin:hover {
 
-/* Movie image */
+            background: #e73355;
+        }
 
-.slide img{
 
-    width:100%;
-    height:100%;
+        /* ===================== REGISTER ===================== */
 
-    object-fit:contain;
-    object-position:center center;
+        .register {
 
-    display:block;
-    background:#111;
-}
+            background: #22232f;
+        }
 
+        .register:hover {
 
-/* Dark gradient */
+            background: #181923;
+        }
 
-.slide::after{
 
-    content:"";
+        /* ===================== MENU ===================== */
 
-    position:absolute;
+        .menu {
 
-    left:0;
-    top:0;
+            width: 42px;
 
-    width:100%;
-    height:100%;
+            height: 42px;
 
-    background:
-    linear-gradient(
-        90deg,
-        rgba(0,0,0,.85),
-        rgba(0,0,0,.45),
-        rgba(0,0,0,.10)
-    );
-}
+            background: #22232f;
 
+            border-radius: 5px;
 
-/* Text inside banner */
+            display: flex;
 
-.slide-content{
+            align-items: center;
 
-    position:absolute;
+            justify-content: center;
 
-    left:9%;
-    top:50%;
+            font-size: 22px;
 
-    transform:translateY(-50%);
+            cursor: pointer;
 
-    color:white;
+            flex-shrink: 0;
+        }
 
-    z-index:2;
+        .menu:hover {
 
-    max-width:500px;
-}
+            background: #f84464;
+        }
 
-.slide-content .tag{
 
-    color:#f84464;
+        /* ================================================= */
+        /*                  MOVIE SLIDER                     */
+        /* ================================================= */
 
-    font-weight:bold;
+        .movie-slider {
 
-    letter-spacing:3px;
+            width: 100%;
 
-    margin-bottom:15px;
-}
+            height: 500px;
 
-.slide-content h1{
+            position: relative;
 
-    font-size:55px;
+            overflow: hidden;
 
-    line-height:1.05;
+            background: #111;
+        }
 
-    margin-bottom:15px;
-}
 
-.slide-content p{
+        /* ===================== SLIDER TRACK ===================== */
 
-    color:#ddd;
+        .slider-track {
 
-    line-height:1.6;
+            display: flex;
 
-    margin-bottom:25px;
+            width: 700%;
 
-    font-size:17px;
-}
+            height: 100%;
 
-.book-btn{
+            animation: movieSlide 28s infinite;
+        }
 
-    background:#f84464;
 
-    color:white;
+        /* ===================== EACH SLIDE ===================== */
 
-    border:0;
+        .slide {
 
-    padding:13px 30px;
+            width: 14.285714%;
 
-    border-radius:5px;
+            height: 100%;
 
-    font-size:15px;
+            flex-shrink: 0;
 
-    cursor:pointer;
-}
+            position: relative;
 
+            overflow: hidden;
 
-/* ================================================= */
-/*                SLIDE ANIMATION                   */
-/* ================================================= */
+            background: #111;
 
-/*
-    7 slides are used.
+            display: flex;
 
-    Slide 1 = MS Dhoni
-    Slide 2 = Jersey
-    Slide 3 = RRR
-    Slide 4 = KGF
-    Slide 5 = Magadheera
-    Slide 6 = Kantara
-    Slide 7 = MS Dhoni again
+            align-items: center;
 
-    The 7th slide is duplicate of first slide.
-    This makes the loop look continuous.
-*/
+            justify-content: center;
+        }
 
-@keyframes movieSlide{
 
-    0%{
-        transform:translateX(0);
-    }
+        /* ================================================= */
+        /*             FULL MOVIE IMAGE                     */
+        /* ================================================= */
 
-    10%{
-        transform:translateX(0);
-    }
+        .slide img {
 
-    14.285%{
-        transform:translateX(-14.285714%);
-    }
+            width: 100%;
 
-    24.285%{
-        transform:translateX(-14.285714%);
-    }
+            height: 100%;
 
-    28.57%{
-        transform:translateX(-28.571428%);
-    }
+            object-fit: contain;
 
-    38.57%{
-        transform:translateX(-28.571428%);
-    }
+            object-position: center center;
 
-    42.855%{
-        transform:translateX(-42.857142%);
-    }
+            display: block;
 
-    52.855%{
-        transform:translateX(-42.857142%);
-    }
+            background: #111;
+        }
 
-    57.14%{
-        transform:translateX(-57.142856%);
-    }
 
-    67.14%{
-        transform:translateX(-57.142856%);
-    }
+        /* ===================== DARK OVERLAY ===================== */
 
-    71.425%{
-        transform:translateX(-71.428570%);
-    }
+        .slide::after {
 
-    81.425%{
-        transform:translateX(-71.428570%);
-    }
+            content: "";
 
-    85.71%{
-        transform:translateX(-85.714284%);
-    }
+            position: absolute;
 
-    100%{
-        transform:translateX(-85.714284%);
-    }
-}
+            left: 0;
 
+            top: 0;
 
-/* ===================== DOTS ===================== */
+            width: 100%;
 
-.slider-dots{
+            height: 100%;
 
-    position:absolute;
+            background:
 
-    bottom:18px;
+                linear-gradient(
 
-    left:50%;
+                    90deg,
 
-    transform:translateX(-50%);
+                    rgba(0,0,0,0.82),
 
-    display:flex;
+                    rgba(0,0,0,0.45),
 
-    gap:8px;
+                    rgba(0,0,0,0.05)
 
-    z-index:5;
-}
+                );
+        }
 
-.dot{
 
-    width:10px;
-    height:10px;
+        /* ===================== SLIDE CONTENT ===================== */
 
-    border-radius:50%;
+        .slide-content {
 
-    background:white;
+            position: absolute;
 
-    opacity:.5;
+            left: 9%;
 
-    animation:dotAnimation 12s infinite;
-}
+            top: 50%;
 
+            transform: translateY(-50%);
 
-/* Different timing for each dot */
+            color: white;
 
-.dot:nth-child(1){
-    animation-delay:0s;
-}
+            z-index: 2;
 
-.dot:nth-child(2){
-    animation-delay:1s;
-}
+            max-width: 500px;
+        }
 
-.dot:nth-child(3){
-    animation-delay:2s;
-}
 
-.dot:nth-child(4){
-    animation-delay:3s;
-}
+        .slide-content .tag {
 
-.dot:nth-child(5){
-    animation-delay:4s;
-}
+            color: #f84464;
 
-.dot:nth-child(6){
-    animation-delay:5s;
-}
+            font-weight: bold;
 
+            letter-spacing: 3px;
 
-@keyframes dotAnimation{
+            margin-bottom: 15px;
 
-    0%{
-        background:#f84464;
-        opacity:1;
-    }
+            font-size: 14px;
+        }
 
-    14%{
-        background:#f84464;
-        opacity:1;
-    }
 
-    15%{
-        background:white;
-        opacity:.5;
-    }
+        .slide-content h1 {
 
-    100%{
-        background:white;
-        opacity:.5;
-    }
-}
+            font-size: 55px;
 
+            line-height: 1.05;
 
-/* ===================== RECOMMENDED ===================== */
+            margin-bottom: 15px;
+        }
 
-.container{
-    width:86%;
 
-    margin:40px auto;
-}
+        .slide-content p {
 
-.section-title{
+            color: #ddd;
 
-    display:flex;
+            line-height: 1.6;
 
-    justify-content:space-between;
+            margin-bottom: 25px;
 
-    align-items:center;
+            font-size: 17px;
+        }
 
-    margin-bottom:25px;
-}
 
-.section-title h2{
-    font-size:24px;
-}
+        /* ===================== BOOK BUTTON ===================== */
 
-.section-title a{
+        .book-btn {
 
-    color:#f84464;
+            display: inline-block;
 
-    text-decoration:none;
+            background: #f84464;
 
-    font-size:14px;
-}
+            color: white;
 
+            padding: 13px 30px;
 
-/* ===================== MOVIE GRID ===================== */
+            border-radius: 5px;
 
-.movie-grid{
+            font-size: 15px;
 
-    display:grid;
+            font-weight: bold;
+        }
 
-    grid-template-columns:
-    repeat(6,1fr);
 
-    gap:22px;
-}
+        .book-btn:hover {
 
-.movie-card{
+            background: #e73355;
+        }
 
-    cursor:pointer;
 
-    transition:.3s;
-}
+        /* ================================================= */
+        /*                  SLIDER ANIMATION                 */
+        /* ================================================= */
 
-.movie-card:hover{
+        @keyframes movieSlide {
 
-    transform:translateY(-7px);
-}
+            0% {
+                transform: translateX(0);
+            }
 
+            10% {
+                transform: translateX(0);
+            }
 
-/* Movie posters */
+            14.285% {
+                transform: translateX(-14.285714%);
+            }
 
-.poster{
+            24.285% {
+                transform: translateX(-14.285714%);
+            }
 
-    height:330px;
+            28.57% {
+                transform: translateX(-28.571428%);
+            }
 
-    border-radius:8px;
+            38.57% {
+                transform: translateX(-28.571428%);
+            }
 
-    position:relative;
+            42.855% {
+                transform: translateX(-42.857142%);
+            }
 
-    overflow:hidden;
+            52.855% {
+                transform: translateX(-42.857142%);
+            }
 
-    display:flex;
+            57.14% {
+                transform: translateX(-57.142856%);
+            }
 
-    align-items:flex-end;
+            67.14% {
+                transform: translateX(-57.142856%);
+            }
 
-    background:#222;
-}
+            71.425% {
+                transform: translateX(-71.428570%);
+            }
 
-.poster img{
+            81.425% {
+                transform: translateX(-71.428570%);
+            }
 
-    width:100%;
+            85.71% {
+                transform: translateX(-85.714284%);
+            }
 
-    height:100%;
+            100% {
+                transform: translateX(-85.714284%);
+            }
+        }
 
-    object-fit:cover;
 
-    display:block;
-}
+        /* ===================== DOTS ===================== */
 
+        .slider-dots {
 
-/* Rating */
+            position: absolute;
 
-.rating{
+            bottom: 20px;
 
-    position:absolute;
+            left: 50%;
 
-    bottom:0;
-    left:0;
-    right:0;
+            transform: translateX(-50%);
 
-    padding:12px;
+            display: flex;
 
-    background:rgba(0,0,0,.8);
+            gap: 8px;
 
-    color:white;
+            z-index: 5;
+        }
 
-    font-size:13px;
 
-    z-index:2;
-}
+        .dot {
 
+            width: 10px;
 
-/* Movie information */
+            height: 10px;
 
-.movie-info{
+            border-radius: 50%;
 
-    padding:12px 3px;
-}
+            background: white;
 
-.movie-info h3{
+            opacity: 0.5;
 
-    font-size:17px;
+            animation: dotAnimation 28s infinite;
+        }
 
-    margin-bottom:7px;
-}
 
-.movie-info p{
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
 
-    color:#777;
+        .dot:nth-child(2) {
+            animation-delay: 4s;
+        }
 
-    font-size:14px;
-}
+        .dot:nth-child(3) {
+            animation-delay: 8s;
+        }
 
+        .dot:nth-child(4) {
+            animation-delay: 12s;
+        }
 
-/* ===================== CATEGORIES ===================== */
+        .dot:nth-child(5) {
+            animation-delay: 16s;
+        }
 
-.categories{
+        .dot:nth-child(6) {
+            animation-delay: 20s;
+        }
 
-    background:white;
 
-    padding:30px 0 50px;
-}
+        @keyframes dotAnimation {
 
-.category-grid{
+            0% {
 
-    display:grid;
+                background: #f84464;
 
-    grid-template-columns:
-    repeat(4,1fr);
+                opacity: 1;
+            }
 
-    gap:20px;
-}
+            14% {
 
-.category{
+                background: #f84464;
 
-    background:#f7f7f7;
+                opacity: 1;
+            }
 
-    padding:28px;
+            15% {
 
-    border-radius:10px;
+                background: white;
 
-    transition:.3s;
-}
+                opacity: 0.5;
+            }
 
-.category:hover{
+            100% {
 
-    transform:translateY(-5px);
+                background: white;
 
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.1);
-}
+                opacity: 0.5;
+            }
+        }
 
-.category-icon{
 
-    font-size:40px;
+        /* ===================== CONTAINER ===================== */
 
-    margin-bottom:15px;
-}
+        .container {
 
-.category h3{
+            width: 86%;
 
-    margin-bottom:8px;
-}
+            margin: 40px auto;
+        }
 
-.category p{
 
-    color:#777;
+        /* ===================== SECTION TITLE ===================== */
 
-    font-size:14px;
-}
+        .section-title {
 
+            display: flex;
 
-/* ===================== OFFER ===================== */
+            justify-content: space-between;
 
-.offer{
+            align-items: center;
 
-    width:86%;
+            margin-bottom: 25px;
+        }
 
-    margin:50px auto;
 
-    padding:40px 50px;
+        .section-title h2 {
 
-    border-radius:12px;
+            font-size: 24px;
+        }
 
-    background:
-    linear-gradient(
-        110deg,
-        #333545,
-        #f84464
-    );
 
-    color:white;
+        .section-title a {
 
-    display:flex;
+            color: #f84464;
 
-    align-items:center;
+            font-size: 14px;
+        }
 
-    justify-content:space-between;
-}
 
-.offer h2{
+        /* ===================== MOVIE GRID ===================== */
 
-    font-size:28px;
+        .movie-grid {
 
-    margin-bottom:10px;
-}
+            display: grid;
 
-.offer p{
+            grid-template-columns: repeat(6, 1fr);
 
-    color:#eee;
-}
+            gap: 22px;
+        }
 
-.offer button{
 
-    background:white;
+        .movie-card {
 
-    border:0;
+            cursor: pointer;
 
-    color:#f84464;
+            transition: 0.3s;
+        }
 
-    padding:13px 25px;
 
-    border-radius:5px;
+        .movie-card:hover {
 
-    font-weight:bold;
-}
+            transform: translateY(-7px);
+        }
 
 
-/* ===================== FOOTER ===================== */
+        /* ===================== POSTER ===================== */
 
-footer{
+        .poster {
 
-    background:#22232f;
+            height: 330px;
 
-    color:white;
+            border-radius: 8px;
 
-    padding:45px 7% 20px;
-}
+            position: relative;
 
-.footer-content{
+            overflow: hidden;
 
-    display:grid;
+            background: #222;
+        }
 
-    grid-template-columns:
-    2fr 1fr 1fr;
 
-    gap:50px;
+        .poster img {
 
-    padding-bottom:35px;
-}
+            width: 100%;
 
-.footer-content h2{
+            height: 100%;
 
-    margin-bottom:12px;
-}
+            object-fit: cover;
 
-.footer-content h2 span{
+            display: block;
+        }
 
-    color:#f84464;
-}
 
-.footer-content h3{
+        /* ===================== RATING ===================== */
 
-    margin-bottom:15px;
-}
+        .rating {
 
-.footer-content a{
+            position: absolute;
 
-    display:block;
+            bottom: 0;
 
-    color:#aaa;
+            left: 0;
 
-    text-decoration:none;
+            right: 0;
 
-    margin:10px 0;
+            padding: 12px;
 
-    font-size:14px;
-}
+            background: rgba(0,0,0,0.8);
 
-.footer-content p{
+            color: white;
 
-    color:#aaa;
+            font-size: 13px;
 
-    font-size:14px;
+            z-index: 2;
+        }
 
-    margin-bottom:8px;
-}
 
-.copyright{
+        /* ===================== MOVIE INFO ===================== */
 
-    border-top:1px solid #444;
+        .movie-info {
 
-    padding-top:20px;
+            padding: 12px 3px;
+        }
 
-    text-align:center;
 
-    color:#777;
+        .movie-info h3 {
 
-    font-size:13px;
-}
+            font-size: 17px;
 
+            margin-bottom: 7px;
+        }
 
-/* ================================================= */
-/*                    RESPONSIVE                    */
-/* ================================================= */
 
-@media(max-width:1100px){
+        .movie-info p {
 
-    .movie-grid{
+            color: #777;
 
-        grid-template-columns:
-        repeat(3,1fr);
-    }
+            font-size: 14px;
+        }
 
-    .slide-content h1{
 
-        font-size:45px;
-    }
+        /* ================================================= */
+        /*                  ENTERTAINMENT                    */
+        /* ================================================= */
 
-}
+        .categories {
 
+            background: white;
 
-@media(max-width:900px){
+            padding: 30px 0 50px;
+        }
 
-    .navbar{
 
-        padding:0 4%;
-    }
+        .category-grid {
 
-    .location{
+            display: grid;
 
-        display:none;
-    }
+            grid-template-columns: repeat(4, 1fr);
 
-    .movie-grid{
+            gap: 20px;
+        }
 
-        grid-template-columns:
-        repeat(3,1fr);
-    }
 
-    .category-grid{
+        .category {
 
-        grid-template-columns:
-        repeat(2,1fr);
-    }
+            background: #f7f7f7;
 
-}
+            padding: 28px;
 
+            border-radius: 10px;
 
-@media(max-width:600px){
+            transition: 0.3s;
+        }
 
-    .navbar{
 
-        height:auto;
+        .category:hover {
 
-        padding:15px;
+            transform: translateY(-5px);
 
-        flex-wrap:wrap;
-    }
+            box-shadow:
 
-    .logo{
+                0 8px 25px rgba(0,0,0,0.1);
+        }
 
-        font-size:22px;
-    }
 
-    .search{
+        .category-icon {
 
-        order:3;
+            font-size: 40px;
 
-        flex-basis:100%;
-    }
+            margin-bottom: 15px;
+        }
 
-    .hero{
 
-        height:350px;
+        .category h3 {
 
-        padding:30px;
-    }
+            margin-bottom: 8px;
+        }
 
-    .movie-slider{
 
-        height:350px;
-    }
+        .category p {
 
-    .slide-content{
+            color: #777;
 
-        left:30px;
-    }
+            font-size: 14px;
+        }
 
-    .slide-content h1{
 
-        font-size:38px;
-    }
+        /* ================================================= */
+        /*                    OFFER                          */
+        /* ================================================= */
 
-    .slide-content p{
+        .offer {
 
-        font-size:14px;
-    }
+            width: 86%;
 
-    .movie-grid{
+            margin: 50px auto;
 
-        grid-template-columns:
-        repeat(2,1fr);
+            padding: 40px 50px;
 
-        gap:15px;
-    }
+            border-radius: 12px;
 
-    .poster{
+            background:
 
-        height:250px;
-    }
+                linear-gradient(
 
-    .category-grid{
+                    110deg,
 
-        grid-template-columns:1fr;
-    }
+                    #333545,
 
-    .offer{
+                    #f84464
 
-        width:90%;
+                );
 
-        flex-direction:column;
+            color: white;
 
-        align-items:flex-start;
+            display: flex;
 
-        gap:20px;
+            align-items: center;
 
-        padding:30px;
-    }
+            justify-content: space-between;
+        }
 
-    .footer-content{
 
-        grid-template-columns:1fr;
+        .offer h2 {
 
-        gap:30px;
-    }
+            font-size: 28px;
 
-}
+            margin-bottom: 10px;
+        }
 
 
-@media(max-width:450px){
+        .offer p {
 
-    .movie-grid{
+            color: #eee;
+        }
 
-        grid-template-columns:
-        repeat(2,1fr);
-    }
 
-    .poster{
+        .offer-btn {
 
-        height:220px;
-    }
+            background: white;
 
-    .slide-content h1{
+            color: #f84464;
 
-        font-size:30px;
-    }
+            padding: 13px 25px;
 
-    .slide-content .tag{
+            border-radius: 5px;
 
-        font-size:12px;
-    }
+            font-weight: bold;
+        }
 
-}
 
-</style>
+        /* ================================================= */
+        /*                    FOOTER                         */
+        /* ================================================= */
+
+        footer {
+
+            background: #22232f;
+
+            color: white;
+
+            padding: 45px 7% 20px;
+        }
+
+
+        .footer-content {
+
+            display: grid;
+
+            grid-template-columns: 2fr 1fr 1fr;
+
+            gap: 50px;
+
+            padding-bottom: 35px;
+        }
+
+
+        .footer-content h2 {
+
+            margin-bottom: 12px;
+        }
+
+
+        .footer-content h2 span {
+
+            color: #f84464;
+        }
+
+
+        .footer-content h3 {
+
+            margin-bottom: 15px;
+        }
+
+
+        .footer-content a {
+
+            display: block;
+
+            color: #aaa;
+
+            margin: 10px 0;
+
+            font-size: 14px;
+        }
+
+
+        .footer-content a:hover {
+
+            color: #f84464;
+        }
+
+
+        .footer-content p {
+
+            color: #aaa;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .copyright {
+
+            border-top: 1px solid #444;
+
+            padding-top: 20px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* ================================================= */
+        /*                    RESPONSIVE                     */
+        /* ================================================= */
+
+        @media (max-width: 1100px) {
+
+            .movie-grid {
+
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .slide-content h1 {
+
+                font-size: 45px;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .navbar {
+
+                padding: 0 4%;
+
+                gap: 15px;
+            }
+
+            .location {
+
+                display: none;
+            }
+
+            .movie-grid {
+
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .category-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                height: auto;
+
+                padding: 15px;
+
+                flex-wrap: wrap;
+            }
+
+
+            .logo {
+
+                font-size: 22px;
+            }
+
+
+            .search {
+
+                order: 5;
+
+                flex-basis: 100%;
+
+                max-width: none;
+            }
+
+
+            .movie-slider {
+
+                height: 400px;
+            }
+
+
+            .slide-content {
+
+                left: 30px;
+
+                right: 30px;
+            }
+
+
+            .slide-content h1 {
+
+                font-size: 38px;
+            }
+
+
+            .slide-content p {
+
+                font-size: 14px;
+            }
+
+
+            .movie-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 15px;
+            }
+
+
+            .poster {
+
+                height: 250px;
+            }
+
+
+            .category-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .offer {
+
+                width: 90%;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+
+                padding: 30px;
+            }
+
+
+            .footer-content {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .navbar {
+
+                gap: 10px;
+            }
+
+
+            .signin {
+
+                padding: 8px 12px;
+
+                font-size: 12px;
+            }
+
+
+            .menu {
+
+                width: 38px;
+
+                height: 38px;
+
+                font-size: 19px;
+            }
+
+
+            .movie-slider {
+
+                height: 350px;
+            }
+
+
+            .slide-content h1 {
+
+                font-size: 30px;
+            }
+
+
+            .slide-content .tag {
+
+                font-size: 12px;
+            }
+
+
+            .slide-content p {
+
+                margin-bottom: 15px;
+            }
+
+
+            .poster {
+
+                height: 220px;
+            }
+
+
+            .movie-info h3 {
+
+                font-size: 15px;
+            }
+
+
+            .movie-info p {
+
+                font-size: 12px;
+            }
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ===================== NAVBAR ===================== -->
+<!-- ================================================= -->
+<!--                    NAVBAR                         -->
+<!-- ================================================= -->
 
 <header class="navbar">
 
+
+    <!-- LOGO -->
+
     <div class="logo">
+
         My<b>Movie</b>Hub
+
     </div>
+
+
+
+    <!-- SEARCH -->
 
     <div class="search">
 
         🔍
 
         <input
-            placeholder="Search for Movies, Events, Plays, Sports and Activities">
+            type="text"
+            placeholder="Search movies, events, sports and activities">
 
     </div>
+
+
+
+    <!-- LOCATION -->
 
     <div class="location">
+
         📍 Bengaluru
+
     </div>
 
-    <a class="signin" href="login.html">
-        Sign in
+
+
+    <!-- LOGIN -->
+
+    <a
+        class="signin"
+        href="login.html">
+
+        Sign In
+
     </a>
 
-    <a class="signin" href="register.html" style="background:#22232f;">
+
+
+    <!-- REGISTER -->
+
+    <a
+        class="signin register"
+        href="register.html">
+
         Register
+
     </a>
+
+
+
+    <!-- MENU -->
 
     <div class="menu">
+
         ☰
+
     </div>
+
 
 </header>
 
 
-<!-- ===================== SUB NAV ===================== -->
-
-<nav class="sub-nav">
-
-    <div>
-
-        <a href="#">Movies</a>
-
-        <a href="#">Stream</a>
-
-        <a href="#">Events</a>
-
-        <a href="#">Plays</a>
-
-        <a href="#">Sports</a>
-
-        <a href="#">Activities</a>
-
-    </div>
-
-    <div>
-
-        <a href="#">ListYourShow</a>
-
-        <a href="#">Offers</a>
-
-        <a href="#">Gift Cards</a>
-
-    </div>
-
-</nav>
-
 
 <!-- ================================================= -->
-<!--                MOVIE SLIDER                      -->
+<!--                  MOVIE SLIDER                     -->
 <!-- ================================================= -->
 
 <section class="movie-slider">
+
 
     <div class="slider-track">
 
@@ -1027,8 +1214,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
-            alt="MS Dhoni">
+                src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+                alt="MS Dhoni">
 
             <div class="slide-content">
 
@@ -1044,13 +1231,18 @@ footer{
                     The Untold Story
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= JERSEY ================= -->
@@ -1058,8 +1250,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
-            alt="Jersey">
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
+                alt="Jersey">
 
             <div class="slide-content">
 
@@ -1075,13 +1267,18 @@ footer{
                     A story of dreams, family and cricket
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= RRR ================= -->
@@ -1089,8 +1286,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
-            alt="RRR">
+                src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
+                alt="RRR">
 
             <div class="slide-content">
 
@@ -1106,13 +1303,18 @@ footer{
                     Rise • Roar • Revolt
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= KGF ================= -->
@@ -1120,8 +1322,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
-            alt="KGF">
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
+                alt="KGF">
 
             <div class="slide-content">
 
@@ -1137,13 +1339,18 @@ footer{
                     Chapter 1
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= MAGADHEERA ================= -->
@@ -1151,8 +1358,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
-            alt="Magadheera">
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
+                alt="Magadheera">
 
             <div class="slide-content">
 
@@ -1168,13 +1375,18 @@ footer{
                     Love • Destiny • War
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= KANTARA ================= -->
@@ -1182,8 +1394,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://www.cinematerial.com/p/500x/ueuv8ncz/kantara-indian-movie-poster.jpg?v=1669636182"
-            alt="Kantara">
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZOOsdzd5Fp0iet23aKfmtOELyV0wRuq-zgVo7EF-mEw&s=10"
+                alt="Kantara">
 
             <div class="slide-content">
 
@@ -1199,13 +1411,18 @@ footer{
                     A divine journey
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- ================= DUPLICATE FIRST ================= -->
@@ -1213,8 +1430,8 @@ footer{
         <div class="slide">
 
             <img
-            src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
-            alt="MS Dhoni">
+                src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+                alt="MS Dhoni">
 
             <div class="slide-content">
 
@@ -1230,9 +1447,13 @@ footer{
                     The Untold Story
                 </p>
 
-                <button class="book-btn">
-                    Book Tickets
-                </button>
+                <a
+                    class="book-btn"
+                    href="login.html">
+
+                    Get Tickets
+
+                </a>
 
             </div>
 
@@ -1240,6 +1461,7 @@ footer{
 
 
     </div>
+
 
 
     <!-- ================= DOTS ================= -->
@@ -1260,14 +1482,19 @@ footer{
 
     </div>
 
+
 </section>
 
 
+
 <!-- ================================================= -->
-<!--             RECOMMENDED MOVIES                   -->
+<!--             RECOMMENDED MOVIES                    -->
 <!-- ================================================= -->
 
-<section class="container">
+<section
+    class="container"
+    id="movies">
+
 
     <div class="section-title">
 
@@ -1275,11 +1502,12 @@ footer{
             Recommended Movies
         </h2>
 
-        <a href="#">
+        <a href="#movies">
             See All →
         </a>
 
     </div>
+
 
 
     <div class="movie-grid">
@@ -1292,8 +1520,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
-                alt="MS Dhoni">
+                    src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+                    alt="MS Dhoni">
 
                 <span class="rating">
                     ⭐ 8.7/10
@@ -1316,6 +1544,7 @@ footer{
         </div>
 
 
+
         <!-- JERSEY -->
 
         <div class="movie-card">
@@ -1323,8 +1552,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
-                alt="Jersey">
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
+                    alt="Jersey">
 
                 <span class="rating">
                     ⭐ 8.4/10
@@ -1347,6 +1576,7 @@ footer{
         </div>
 
 
+
         <!-- RRR -->
 
         <div class="movie-card">
@@ -1354,8 +1584,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
-                alt="RRR">
+                    src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
+                    alt="RRR">
 
                 <span class="rating">
                     ⭐ 8.9/10
@@ -1378,6 +1608,7 @@ footer{
         </div>
 
 
+
         <!-- KGF -->
 
         <div class="movie-card">
@@ -1385,8 +1616,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
-                alt="KGF">
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
+                    alt="KGF">
 
                 <span class="rating">
                     ⭐ 8.6/10
@@ -1409,6 +1640,7 @@ footer{
         </div>
 
 
+
         <!-- MAGADHEERA -->
 
         <div class="movie-card">
@@ -1416,8 +1648,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
-                alt="Magadheera">
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
+                    alt="Magadheera">
 
                 <span class="rating">
                     ⭐ 8.2/10
@@ -1440,6 +1672,7 @@ footer{
         </div>
 
 
+
         <!-- KANTARA -->
 
         <div class="movie-card">
@@ -1447,8 +1680,8 @@ footer{
             <div class="poster">
 
                 <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZOOsdzd5Fp0iet23aKfmtOELyV0wRuq-zgVo7EF-mEw&s=10"
-                alt="Kantara">
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZOOsdzd5Fp0iet23aKfmtOELyV0wRuq-zgVo7EF-mEw&s=10"
+                    alt="Kantara">
 
                 <span class="rating">
                     ⭐ 8.5/10
@@ -1476,13 +1709,16 @@ footer{
 </section>
 
 
+
 <!-- ================================================= -->
-<!--              ENTERTAINMENT                       -->
+<!--              ENTERTAINMENT                        -->
 <!-- ================================================= -->
 
 <section class="categories">
 
+
     <div class="container">
+
 
         <div class="section-title">
 
@@ -1491,10 +1727,11 @@ footer{
             </h2>
 
             <a href="#">
-                See All →
+                Explore All →
             </a>
 
         </div>
+
 
 
         <div class="category-grid">
@@ -1517,6 +1754,7 @@ footer{
             </div>
 
 
+
             <div class="category">
 
                 <div class="category-icon">
@@ -1528,10 +1766,11 @@ footer{
                 </h3>
 
                 <p>
-                    Concerts & experiences
+                    Concerts and experiences
                 </p>
 
             </div>
+
 
 
             <div class="category">
@@ -1541,14 +1780,15 @@ footer{
                 </div>
 
                 <h3>
-                    Plays
+                    Theatre
                 </h3>
 
                 <p>
-                    Drama & theatre
+                    Drama and theatre shows
                 </p>
 
             </div>
+
 
 
             <div class="category">
@@ -1562,7 +1802,7 @@ footer{
                 </h3>
 
                 <p>
-                    Sports & matches
+                    Sports and live matches
                 </p>
 
             </div>
@@ -1575,8 +1815,9 @@ footer{
 </section>
 
 
+
 <!-- ================================================= -->
-<!--                    OFFER                         -->
+<!--                    OFFER                          -->
 <!-- ================================================= -->
 
 <section class="offer">
@@ -1593,21 +1834,30 @@ footer{
 
     </div>
 
-    <button>
+
+    <a
+        class="offer-btn"
+        href="login.html">
+
         Explore Offers
-    </button>
+
+    </a>
 
 </section>
 
 
+
 <!-- ================================================= -->
-<!--                    FOOTER                        -->
+<!--                    FOOTER                         -->
 <!-- ================================================= -->
 
 <footer>
 
+
     <div class="footer-content">
 
+
+        <!-- ABOUT -->
 
         <div>
 
@@ -1619,8 +1869,15 @@ footer{
                 Your entertainment, our passion.
             </p>
 
+            <p>
+                A student frontend project.
+            </p>
+
         </div>
 
+
+
+        <!-- QUICK LINKS -->
 
         <div>
 
@@ -1628,7 +1885,7 @@ footer{
                 Quick Links
             </h3>
 
-            <a href="#">
+            <a href="#movies">
                 Movies
             </a>
 
@@ -1640,8 +1897,15 @@ footer{
                 Offers
             </a>
 
+            <a href="login.html">
+                Login
+            </a>
+
         </div>
 
+
+
+        <!-- DEVELOPED BY -->
 
         <div>
 
@@ -1649,20 +1913,31 @@ footer{
                 Developed By
             </h3>
 
-            <p>Nitya.P</p>
+            <p>
+                Nitya.P
+            </p>
 
-            <p>Karishma</p>
+            <p>
+                Karishma
+            </p>
 
-            <p>Jeevana Shree</p>
+            <p>
+                Jeevana Shree
+            </p>
 
-            <p>Sandeep</p>
+            <p>
+                Sandeep
+            </p>
 
-            <p>B.V.CH.Harsha Vardhan</p>
+            <p>
+                B.V.CH.Harsha Vardhan
+            </p>
 
         </div>
 
 
     </div>
+
 
 
     <div class="copyright">
@@ -1671,6 +1946,9 @@ footer{
 
     </div>
 
+
 </footer>
+
+
 </body>
 </html>
