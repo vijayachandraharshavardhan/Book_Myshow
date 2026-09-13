@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BookMyShow Clone</title>
+
+<style>
+
+/* ===================== BASIC ===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    color:#222;
+}
+
+
+/* ===================== NAVBAR ===================== */
+
+.navbar{
+    height:70px;
+    background:#333545;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 7%;
+    gap:25px;
+
+    color:white;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:bold;
+}
+
+.logo b{
+    color:#f84464;
+}
+
+.search{
+    background:white;
+    color:#777;
+
+    height:42px;
+    border-radius:5px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 15px;
+
+    flex:1;
+    max-width:600px;
+}
+
+.search input{
+    border:0;
+    outline:0;
+
+    width:100%;
+
+    padding-left:10px;
+}
+
+.location{
+    font-size:14px;
+}
+
+.signin{
+    background:#f84464;
+
+    border:0;
+    color:#fff;
+
+    padding:9px 20px;
+
+    border-radius:4px;
+
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.menu{
+    font-size:22px;
+}
+
+
+/* ===================== SUB NAV ===================== */
+
+.sub-nav{
+    height:45px;
+
+    background:#22232f;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 7%;
+
+    overflow:hidden;
+}
+
+.sub-nav a{
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    margin-right:22px;
+
+    white-space:nowrap;
+}
+
+
+/* ================================================= */
+/*              CSS ONLY MOVIE SLIDER               */
+/* ================================================= */
+
+.movie-slider{
+
+    width:100%;
+
+    height:430px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#111;
+}
+
+
+/* All slides */
+
+.slider-track{
+
+    display:flex;
+
+    width:700%;
+
+    height:100%;
+
+    animation:movieSlide 12s infinite;
+
+}
+
+
+/* Every slide */
+
+.slide{
+
+    width:14.285714%;
+
+    height:100%;
+
+    flex-shrink:0;
+
+    position:relative;
+
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#111;
+}
+
+
+/* Movie image */
+
+.slide img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+    object-position:center center;
+
+    display:block;
+    background:#111;
+}
+
+
+/* Dark gradient */
+
+.slide::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.10)
+    );
+}
+
+
+/* Text inside banner */
+
+.slide-content{
+
+    position:absolute;
+
+    left:9%;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:white;
+
+    z-index:2;
+
+    max-width:500px;
+}
+
+.slide-content .tag{
+
+    color:#f84464;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.slide-content h1{
+
+    font-size:55px;
+
+    line-height:1.05;
+
+    margin-bottom:15px;
+}
+
+.slide-content p{
+
+    color:#ddd;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+    font-size:17px;
+}
+
+.book-btn{
+
+    background:#f84464;
+
+    color:white;
+
+    border:0;
+
+    padding:13px 30px;
+
+    border-radius:5px;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+
+/* ================================================= */
+/*                SLIDE ANIMATION                   */
+/* ================================================= */
+
+/*
+    7 slides are used.
+
+    Slide 1 = MS Dhoni
+    Slide 2 = Jersey
+    Slide 3 = RRR
+    Slide 4 = KGF
+    Slide 5 = Magadheera
+    Slide 6 = Kantara
+    Slide 7 = MS Dhoni again
+
+    The 7th slide is duplicate of first slide.
+    This makes the loop look continuous.
+*/
+
+@keyframes movieSlide{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    10%{
+        transform:translateX(0);
+    }
+
+    14.285%{
+        transform:translateX(-14.285714%);
+    }
+
+    24.285%{
+        transform:translateX(-14.285714%);
+    }
+
+    28.57%{
+        transform:translateX(-28.571428%);
+    }
+
+    38.57%{
+        transform:translateX(-28.571428%);
+    }
+
+    42.855%{
+        transform:translateX(-42.857142%);
+    }
+
+    52.855%{
+        transform:translateX(-42.857142%);
+    }
+
+    57.14%{
+        transform:translateX(-57.142856%);
+    }
+
+    67.14%{
+        transform:translateX(-57.142856%);
+    }
+
+    71.425%{
+        transform:translateX(-71.428570%);
+    }
+
+    81.425%{
+        transform:translateX(-71.428570%);
+    }
+
+    85.71%{
+        transform:translateX(-85.714284%);
+    }
+
+    100%{
+        transform:translateX(-85.714284%);
+    }
+}
+
+
+/* ===================== DOTS ===================== */
+
+.slider-dots{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:8px;
+
+    z-index:5;
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.5;
+
+    animation:dotAnimation 12s infinite;
+}
+
+
+/* Different timing for each dot */
+
+.dot:nth-child(1){
+    animation-delay:0s;
+}
+
+.dot:nth-child(2){
+    animation-delay:1s;
+}
+
+.dot:nth-child(3){
+    animation-delay:2s;
+}
+
+.dot:nth-child(4){
+    animation-delay:3s;
+}
+
+.dot:nth-child(5){
+    animation-delay:4s;
+}
+
+.dot:nth-child(6){
+    animation-delay:5s;
+}
+
+
+@keyframes dotAnimation{
+
+    0%{
+        background:#f84464;
+        opacity:1;
+    }
+
+    14%{
+        background:#f84464;
+        opacity:1;
+    }
+
+    15%{
+        background:white;
+        opacity:.5;
+    }
+
+    100%{
+        background:white;
+        opacity:.5;
+    }
+}
+
+
+/* ===================== RECOMMENDED ===================== */
+
+.container{
+    width:86%;
+
+    margin:40px auto;
+}
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title a{
+
+    color:#f84464;
+
+    text-decoration:none;
+
+    font-size:14px;
+}
+
+
+/* ===================== MOVIE GRID ===================== */
+
+.movie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(6,1fr);
+
+    gap:22px;
+}
+
+.movie-card{
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.movie-card:hover{
+
+    transform:translateY(-7px);
+}
+
+
+/* Movie posters */
+
+.poster{
+
+    height:330px;
+
+    border-radius:8px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    background:#222;
+}
+
+.poster img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+/* Rating */
+
+.rating{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+    right:0;
+
+    padding:12px;
+
+    background:rgba(0,0,0,.8);
+
+    color:white;
+
+    font-size:13px;
+
+    z-index:2;
+}
+
+
+/* Movie information */
+
+.movie-info{
+
+    padding:12px 3px;
+}
+
+.movie-info h3{
+
+    font-size:17px;
+
+    margin-bottom:7px;
+}
+
+.movie-info p{
+
+    color:#777;
+
+    font-size:14px;
+}
+
+
+/* ===================== CATEGORIES ===================== */
+
+.categories{
+
+    background:white;
+
+    padding:30px 0 50px;
+}
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+.category{
+
+    background:#f7f7f7;
+
+    padding:28px;
+
+    border-radius:10px;
+
+    transition:.3s;
+}
+
+.category:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.1);
+}
+
+.category-icon{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.category h3{
+
+    margin-bottom:8px;
+}
+
+.category p{
+
+    color:#777;
+
+    font-size:14px;
+}
+
+
+/* ===================== OFFER ===================== */
+
+.offer{
+
+    width:86%;
+
+    margin:50px auto;
+
+    padding:40px 50px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        110deg,
+        #333545,
+        #f84464
+    );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.offer h2{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+}
+
+.offer p{
+
+    color:#eee;
+}
+
+.offer button{
+
+    background:white;
+
+    border:0;
+
+    color:#f84464;
+
+    padding:13px 25px;
+
+    border-radius:5px;
+
+    font-weight:bold;
+}
+
+
+/* ===================== FOOTER ===================== */
+
+footer{
+
+    background:#22232f;
+
+    color:white;
+
+    padding:45px 7% 20px;
+}
+
+.footer-content{
+
+    display:grid;
+
+    grid-template-columns:
+    2fr 1fr 1fr;
+
+    gap:50px;
+
+    padding-bottom:35px;
+}
+
+.footer-content h2{
+
+    margin-bottom:12px;
+}
+
+.footer-content h2 span{
+
+    color:#f84464;
+}
+
+.footer-content h3{
+
+    margin-bottom:15px;
+}
+
+.footer-content a{
+
+    display:block;
+
+    color:#aaa;
+
+    text-decoration:none;
+
+    margin:10px 0;
+
+    font-size:14px;
+}
+
+.footer-content p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+}
+
+.copyright{
+
+    border-top:1px solid #444;
+
+    padding-top:20px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:13px;
+}
+
+
+/* ================================================= */
+/*                    RESPONSIVE                    */
+/* ================================================= */
+
+@media(max-width:1100px){
+
+    .movie-grid{
+
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .slide-content h1{
+
+        font-size:45px;
+    }
+
+}
+
+
+@media(max-width:900px){
+
+    .navbar{
+
+        padding:0 4%;
+    }
+
+    .location{
+
+        display:none;
+    }
+
+    .movie-grid{
+
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .category-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+
+        height:auto;
+
+        padding:15px;
+
+        flex-wrap:wrap;
+    }
+
+    .logo{
+
+        font-size:22px;
+    }
+
+    .search{
+
+        order:3;
+
+        flex-basis:100%;
+    }
+
+    .hero{
+
+        height:350px;
+
+        padding:30px;
+    }
+
+    .movie-slider{
+
+        height:350px;
+    }
+
+    .slide-content{
+
+        left:30px;
+    }
+
+    .slide-content h1{
+
+        font-size:38px;
+    }
+
+    .slide-content p{
+
+        font-size:14px;
+    }
+
+    .movie-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:15px;
+    }
+
+    .poster{
+
+        height:250px;
+    }
+
+    .category-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .offer{
+
+        width:90%;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+        padding:30px;
+    }
+
+    .footer-content{
+
+        grid-template-columns:1fr;
+
+        gap:30px;
+    }
+
+}
+
+
+@media(max-width:450px){
+
+    .movie-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .poster{
+
+        height:220px;
+    }
+
+    .slide-content h1{
+
+        font-size:30px;
+    }
+
+    .slide-content .tag{
+
+        font-size:12px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ===================== NAVBAR ===================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        book<b>my</b>show
+    </div>
+
+    <div class="search">
+
+        🔍
+
+        <input
+            placeholder="Search for Movies, Events, Plays, Sports and Activities">
+
+    </div>
+
+    <div class="location">
+        📍 Bengaluru
+    </div>
+
+    <a class="signin" href="login.html">
+        Sign in
+    </a>
+
+    <a class="signin" href="register.html" style="background:#22232f;">
+        Register
+    </a>
+
+    <div class="menu">
+        ☰
+    </div>
+
+</header>
+
+
+<!-- ===================== SUB NAV ===================== -->
+
+<nav class="sub-nav">
+
+    <div>
+
+        <a href="#">Movies</a>
+
+        <a href="#">Stream</a>
+
+        <a href="#">Events</a>
+
+        <a href="#">Plays</a>
+
+        <a href="#">Sports</a>
+
+        <a href="#">Activities</a>
+
+    </div>
+
+    <div>
+
+        <a href="#">ListYourShow</a>
+
+        <a href="#">Offers</a>
+
+        <a href="#">Gift Cards</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================================================= -->
+<!--                MOVIE SLIDER                      -->
+<!-- ================================================= -->
+
+<section class="movie-slider">
+
+    <div class="slider-track">
+
+
+        <!-- ================= MS DHONI ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+            alt="MS Dhoni">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    MS DHONI
+                </h1>
+
+                <p>
+                    The Untold Story
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= JERSEY ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
+            alt="Jersey">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    JERSEY
+                </h1>
+
+                <p>
+                    A story of dreams, family and cricket
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RRR ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
+            alt="RRR">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    RRR
+                </h1>
+
+                <p>
+                    Rise • Roar • Revolt
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= KGF ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
+            alt="KGF">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    KGF
+                </h1>
+
+                <p>
+                    Chapter 1
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAGADHEERA ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
+            alt="Magadheera">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    MAGADHEERA
+                </h1>
+
+                <p>
+                    Love • Destiny • War
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= KANTARA ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://www.cinematerial.com/p/500x/ueuv8ncz/kantara-indian-movie-poster.jpg?v=1669636182"
+            alt="Kantara">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    KANTARA
+                </h1>
+
+                <p>
+                    A divine journey
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= DUPLICATE FIRST ================= -->
+
+        <div class="slide">
+
+            <img
+            src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+            alt="MS Dhoni">
+
+            <div class="slide-content">
+
+                <p class="tag">
+                    NOW SHOWING
+                </p>
+
+                <h1>
+                    MS DHONI
+                </h1>
+
+                <p>
+                    The Untold Story
+                </p>
+
+                <button class="book-btn">
+                    Book Tickets
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= DOTS ================= -->
+
+    <div class="slider-dots">
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!--             RECOMMENDED MOVIES                   -->
+<!-- ================================================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Recommended Movies
+        </h2>
+
+        <a href="#">
+            See All →
+        </a>
+
+    </div>
+
+
+    <div class="movie-grid">
+
+
+        <!-- MS DHONI -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://www.impawards.com/intl/india/2016/posters/m_s_dhoni_the_untold_story.jpg"
+                alt="MS Dhoni">
+
+                <span class="rating">
+                    ⭐ 8.7/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    MS Dhoni
+                </h3>
+
+                <p>
+                    Biography • Drama
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- JERSEY -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5cXOViEN97PwfRj9B9Dpep5l2WdsJPtVphb9_MPWFqRQ_euy7S86EQo&s=10"
+                alt="Jersey">
+
+                <span class="rating">
+                    ⭐ 8.4/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Jersey
+                </h3>
+
+                <p>
+                    Drama • Sports
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RRR -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://www.impawards.com/intl/india/2022/posters/rrr.jpg"
+                alt="RRR">
+
+                <span class="rating">
+                    ⭐ 8.9/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    RRR
+                </h3>
+
+                <p>
+                    Action • Drama
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- KGF -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/K.G.F._Chapter_1_.png"
+                alt="KGF">
+
+                <span class="rating">
+                    ⭐ 8.6/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    KGF
+                </h3>
+
+                <p>
+                    Action • Thriller
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAGADHEERA -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCf6ZTrpxSZwYXSNVIBkjqDzkkb_uZ4cLwgShVZ0yZsxOFEIasiwj3j4&s=10"
+                alt="Magadheera">
+
+                <span class="rating">
+                    ⭐ 8.2/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Magadheera
+                </h3>
+
+                <p>
+                    Fantasy • Action
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- KANTARA -->
+
+        <div class="movie-card">
+
+            <div class="poster">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZOOsdzd5Fp0iet23aKfmtOELyV0wRuq-zgVo7EF-mEw&s=10"
+                alt="Kantara">
+
+                <span class="rating">
+                    ⭐ 8.5/10
+                </span>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Kantara
+                </h3>
+
+                <p>
+                    Action • Drama
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!--              ENTERTAINMENT                       -->
+<!-- ================================================= -->
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Explore Entertainment
+            </h2>
+
+            <a href="#">
+                See All →
+            </a>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🎬
+                </div>
+
+                <h3>
+                    Movies
+                </h3>
+
+                <p>
+                    Watch the latest movies
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🎤
+                </div>
+
+                <h3>
+                    Live Events
+                </h3>
+
+                <p>
+                    Concerts & experiences
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🎭
+                </div>
+
+                <h3>
+                    Plays
+                </h3>
+
+                <p>
+                    Drama & theatre
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🏏
+                </div>
+
+                <h3>
+                    Sports
+                </h3>
+
+                <p>
+                    Sports & matches
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!--                    OFFER                         -->
+<!-- ================================================= -->
+
+<section class="offer">
+
+    <div>
+
+        <h2>
+            Enjoy Amazing Offers
+        </h2>
+
+        <p>
+            Get exciting discounts on your movie bookings.
+        </p>
+
+    </div>
+
+    <button>
+        Explore Offers
+    </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!--                    FOOTER                        -->
+<!-- ================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <h2>
+                book<span>my</span>show
+            </h2>
+
+            <p>
+                Your entertainment, our passion.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#">
+                Movies
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Offers
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Developed By
+            </h3>
+
+            <p>Nitya.P</p>
+
+            <p>Karishma</p>
+
+            <p>Jeevana Shree</p>
+
+            <p>Sandeep</p>
+
+            <p>B.V.CH.Harsha Vardhan</p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 All Rights Reserved To  BookMyShow DCl Team-5
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
